@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><title>[Lo-Fi] Persetujuan Peer - AKHLAK 360</title><style>
+  * { box-sizing: border-box; font-family: 'Courier New', monospace; }
+  body { background: #e5e5e5; margin: 0; padding: 20px; color: #000; }
+  .wf-container { max-width: 1200px; margin: 0 auto; background: #fff; border: 3px solid #000; display: flex; flex-direction: column; min-height: 90vh; }
+  .wf-header { border-bottom: 3px solid #000; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; background: #f0f0f0; font-weight: bold; }
+  .wf-sidebar { width: 250px; border-right: 3px solid #000; padding: 20px; background: #fafafa; }
+  .wf-main { flex: 1; padding: 30px; }
+  .wf-box { border: 2px solid #000; padding: 20px; margin-bottom: 20px; background: #fff; position: relative; }
+  .wf-btn { display: inline-block; border: 2px solid #000; padding: 10px 20px; background: #e0e0e0; text-decoration: none; color: #000; font-weight: bold; text-align: center; cursor: pointer; }
+  .wf-btn-success { background: #4caf50; color: white; border-color: #388e3c; }
+  .wf-btn-danger { background: #f44336; color: white; border-color: #c62828; }
+  .wf-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+  .wf-table th, .wf-table td { border: 2px solid #000; padding: 12px; text-align: left; }
+  .wf-nav-item { border: 2px solid #000; padding: 10px; margin-bottom: 10px; background: #eee; font-weight: bold; display: block; text-decoration: none; color: black; }
+  .wf-nav-item.active { background: #ccc; }
+  .wf-placeholder { border: 2px dashed #000; background: #eee; display: flex; align-items: center; justify-content: center; height: 150px; font-weight: bold; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px; }
+</style></head><body>
+<div class="wf-container">
+  <div class="wf-header">
+    <div>AKHLAK 360 Lofi</div>
+    <div>Role: ATASAN</div>
+  </div>
+  <div style="display:flex;flex:1">
+    <div class="wf-sidebar">
+      <div style="margin-bottom:20px;padding:10px;background:#f0f0f0;border:2px solid #000;font-weight:bold;text-align:center">A</div>
+      <a href="dashboard-atasan.html" class="wf-nav-item">Dashboard Tim</a>
+      <a href="persetujuan-peer.html" class="wf-nav-item active">Approve Peer</a>
+      <a href="form-penilaian.html" class="wf-nav-item">Penilaian Bawahan</a>
+      <a href="login.html" class="wf-nav-item" style="margin-top:50px;border-color:#f44336;color:#f44336">Logout</a>
+    </div>
+    <div class="wf-main">
+      <h1>Persetujuan Penilai Peer</h1>
+      <p>Tinjau dan setujui rekan kerja yang ditunjuk untuk menilai bawahan Anda.</p>
+
+      <div class="wf-box">
+        <table class="wf-table">
+          <thead><tr style="background:#f0f0f0"><th>Peer (Penilai)</th><th>Menilai</th><th>Hubungan</th><th>Status</th><th>Aksi</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><p style="font-weight:bold">Rina Amelia</p><p style="font-size:10px;color:#666">Staff Marketing</p></td>
+              <td>Budi Santoso</td>
+              <td>Rekan Kerja</td>
+              <td><span style="display:inline-block;padding:4px 10px;border:2px solid #ff9800;background:#fff3e0;font-size:10px;font-weight:bold">PENDING</span></td>
+              <td><button class="wf-btn wf-btn-success" style="font-size:10px;padding:4px 8px">Setuju</button> <button class="wf-btn wf-btn-danger" style="font-size:10px;padding:4px 8px">Tolak</button></td>
+            </tr>
+            <tr>
+              <td><p style="font-weight:bold">Tono Hartono</p><p style="font-size:10px;color:#666">Staff Operasional</p></td>
+              <td>Andi Dermawan</td>
+              <td>Rekan Kerja</td>
+              <td><span style="display:inline-block;padding:4px 10px;border:2px solid #ff9800;background:#fff3e0;font-size:10px;font-weight:bold">PENDING</span></td>
+              <td><button class="wf-btn wf-btn-success" style="font-size:10px;padding:4px 8px">Setuju</button> <button class="wf-btn wf-btn-danger" style="font-size:10px;padding:4px 8px">Tolak</button></td>
+            </tr>
+            <tr>
+              <td><p style="font-weight:bold">Dewi Lestari</p><p style="font-size:10px;color:#666">Staff IT</p></td>
+              <td>Siti Rahma</td>
+              <td>Rekan Kerja</td>
+              <td><span style="display:inline-block;padding:4px 10px;border:2px solid #4caf50;background:#e8f5e9;font-size:10px;font-weight:bold">DISETUJUI</span></td>
+              <td><span style="font-size:10px;font-weight:bold;color:#4caf50">✓ Approved</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

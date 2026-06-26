@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang="id"><head><title>Sign In | AKHLAK 360</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+          colors: {
+            brand: { 50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd', 400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a' },
+            teal: { 400: '#2dd4bf', 500: '#14b8a6', 600: '#0d9488' }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .glass-panel { background: rgba(255,255,255,0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.4); box-shadow: 0 8px 32px 0 rgba(31,38,135,0.07); border-radius: 24px; }
+  </style>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="min-h-screen w-full relative flex items-center justify-center overflow-hidden bg-slate-900">
+  <!-- Background Elements -->
+  <div class="absolute inset-0 z-0">
+    <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-brand-500/40 blur-[120px] mix-blend-screen animate-pulse"></div>
+    <div class="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-teal-400/30 blur-[150px] mix-blend-screen"></div>
+    <div class="absolute top-[20%] right-[15%] w-[30%] h-[30%] rounded-full bg-indigo-500/20 blur-[100px] mix-blend-screen"></div>
+  </div>
+
+  <div class="w-full max-w-6xl mx-auto px-4 z-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+    <!-- Left: Branding -->
+    <div class="flex-1 text-center lg:text-left pt-12 lg:pt-0">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-6">
+        <i data-lucide="shield-check" class="w-4 h-4 text-teal-400"></i>
+        <span class="text-xs font-semibold tracking-wider text-slate-200 uppercase">Internal Corporate Portal</span>
+      </div>
+      <h1 class="text-5xl lg:text-7xl font-extrabold text-white tracking-tight leading-tight mb-6">
+        Evaluasi AKHLAK <br/>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-teal-400">360 Derajat</span>
+      </h1>
+      <p class="text-lg text-slate-300 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
+        Sistem penilaian kinerja komprehensif PT Energi Nusantara. Membangun budaya kerja unggul melalui evaluasi transparan dan objektif.
+      </p>
+      <div class="hidden lg:flex items-center gap-8 mt-12">
+        <div class="flex flex-col"><span class="text-3xl font-bold text-white">6</span><span class="text-sm font-semibold text-slate-400 uppercase tracking-wider mt-1">Core Values</span></div>
+        <div class="w-px h-12 bg-slate-700"></div>
+        <div class="flex flex-col"><span class="text-3xl font-bold text-white">4</span><span class="text-sm font-semibold text-slate-400 uppercase tracking-wider mt-1">Metode Evaluasi</span></div>
+        <div class="w-px h-12 bg-slate-700"></div>
+        <div class="flex flex-col"><span class="text-3xl font-bold text-white">100%</span><span class="text-sm font-semibold text-slate-400 uppercase tracking-wider mt-1">Terintegrasi</span></div>
+      </div>
+    </div>
+
+    <!-- Right: Login Card -->
+    <div class="w-full max-w-md">
+      <div class="glass-panel p-8 sm:p-10 relative overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
+        <div class="mb-8">
+          <h2 class="text-2xl font-bold text-slate-800 tracking-tight">Selamat Datang</h2>
+          <p class="text-slate-500 mt-1 text-sm font-medium">Silakan masuk menggunakan kredensial Anda</p>
+        </div>
+        <form class="space-y-5">
+          <div class="space-y-1.5">
+            <label class="text-sm font-semibold text-slate-700">Email / NIP</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none"><i data-lucide="mail" class="w-5 h-5 text-slate-400"></i></div>
+              <input type="text" class="block w-full pl-11 pr-4 py-3 bg-white/50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 transition-all sm:text-sm font-medium" placeholder="nama@energinusantara.com" />
+            </div>
+          </div>
+          <div class="space-y-1.5">
+            <label class="text-sm font-semibold text-slate-700">Kata Sandi</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none"><i data-lucide="lock-keyhole" class="w-5 h-5 text-slate-400"></i></div>
+              <input type="password" class="block w-full pl-11 pr-4 py-3 bg-white/50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 transition-all sm:text-sm font-medium" placeholder="••••••••" />
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-1">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" class="h-4 w-4 text-brand-600 focus:ring-brand-500 border-slate-300 rounded cursor-pointer" />
+              <span class="text-sm text-slate-600 font-medium cursor-pointer">Ingat Saya</span>
+            </label>
+            <a href="#" class="text-sm font-semibold text-brand-600 hover:text-brand-700 transition-colors">Lupa Sandi?</a>
+          </div>
+          <a href="dashboard-karyawan.html" class="w-full flex items-center justify-center gap-2 py-3.5 px-4 mt-2 border border-transparent rounded-xl shadow-lg shadow-brand-500/20 text-sm font-bold text-white bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-500 hover:to-brand-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500 transition-all hover:-translate-y-0.5">
+            Masuk
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </a>
+        </form>
+        <div class="mt-8 pt-6 border-t border-slate-200/50">
+          <p class="text-[10px] font-bold text-slate-400 mb-3 uppercase tracking-wider text-center">Akses Cepat (Demo Selector)</p>
+          <div class="relative">
+            <select onchange="if(this.value){const m={'admin@energinusantara.com':'/dashboard/admin','manajemen@energinusantara.com':'/dashboard/manajemen','atasan@energinusantara.com':'/dashboard/atasan','rizky@energinusantara.com':'/dashboard/karyawan','siti@energinusantara.com':'/dashboard/karyawan'};if(m[this.value])window.location.href=m[this.value];}" class="w-full appearance-none pl-4 pr-10 py-2.5 bg-white/50 border border-slate-200 rounded-xl text-slate-700 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 cursor-pointer transition-all">
+              <option value="" disabled selected>Pilih Akun Demonstrasi...</option>
+              <optgroup label="Administrator & Eksekutif">
+                <option value="admin@energinusantara.com">Admin HR (Ahmad Admin)</option>
+                <option value="manajemen@energinusantara.com">Manajemen (Bapak Direktur)</option>
+              </optgroup>
+              <optgroup label="Manajerial & Karyawan">
+                <option value="atasan@energinusantara.com">Atasan (Ahmad Fauzi)</option>
+                <option value="rizky@energinusantara.com">Karyawan 1 (Rizky)</option>
+                <option value="siti@energinusantara.com">Karyawan 2 (Siti)</option>
+              </optgroup>
+            </select>
+            <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none"><i data-lucide="chevron-right" class="w-4 h-4 text-slate-400 rotate-90"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

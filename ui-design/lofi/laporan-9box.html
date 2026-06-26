@@ -1,0 +1,65 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><title>[Lo-Fi] Talent 9-Box Matrix - AKHLAK 360</title><style>
+  * { box-sizing: border-box; font-family: 'Courier New', monospace; }
+  body { background: #e5e5e5; margin: 0; padding: 20px; color: #000; }
+  .wf-container { max-width: 1200px; margin: 0 auto; background: #fff; border: 3px solid #000; display: flex; flex-direction: column; min-height: 90vh; }
+  .wf-header { border-bottom: 3px solid #000; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; background: #f0f0f0; font-weight: bold; }
+  .wf-sidebar { width: 250px; border-right: 3px solid #000; padding: 20px; background: #fafafa; }
+  .wf-main { flex: 1; padding: 30px; }
+  .wf-box { border: 2px solid #000; padding: 20px; margin-bottom: 20px; background: #fff; position: relative; }
+  .wf-btn { display: inline-block; border: 2px solid #000; padding: 10px 20px; background: #e0e0e0; text-decoration: none; color: #000; font-weight: bold; text-align: center; cursor: pointer; }
+  .wf-btn-primary { background: #555; color: white; }
+  .wf-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+  .wf-table th, .wf-table td { border: 2px solid #000; padding: 12px; text-align: left; }
+  .wf-nav-item { border: 2px solid #000; padding: 10px; margin-bottom: 10px; background: #eee; font-weight: bold; display: block; text-decoration: none; color: black; }
+  .wf-nav-item.active { background: #ccc; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px; }
+</style></head><body>
+<div class="wf-container">
+  <div class="wf-header">
+    <div>AKHLAK 360 Lofi</div>
+    <div>Role: MANAJEMEN</div>
+  </div>
+  <div style="display:flex;flex:1">
+    <div class="wf-sidebar">
+      <div style="margin-bottom:20px;padding:10px;background:#f0f0f0;border:2px solid #000;font-weight:bold;text-align:center">A</div>
+      <a href="dashboard-manajemen.html" class="wf-nav-item">Executive Dashboard</a>
+      <a href="laporan-9box.html" class="wf-nav-item active">Talent Mapping</a>
+      <a href="laporan-akhir.html" class="wf-nav-item">Laporan Strategis</a>
+      <a href="login.html" class="wf-nav-item" style="margin-top:50px;border-color:#f44336;color:#f44336">Logout</a>
+    </div>
+    <div class="wf-main">
+      <h1>Matriks Talent (9-Box Grid)</h1>
+      <p>Pemetaan suksesi karyawan berbasis Potensi vs Kinerja AKHLAK.</p>
+
+      <div class="wf-box" style="background:#f8f8f8">
+        <p><strong>Metodologi Pemetaan AKHLAK 360:</strong></p>
+        <p>Sumbu Y (Potensi): Rata-rata Kompeten & Adaptif</p>
+        <p>Sumbu X (Kinerja): Rata-rata Amanah, Harmonis, Loyal, Kolaboratif</p>
+      </div>
+
+      <div class="wf-box" style="overflow-x:auto">
+        <div style="display:flex;justify-content:space-between;font-size:10px;text-transform:uppercase;font-weight:bold;color:#999;margin-bottom:10px">
+          <span>Potensi ↑</span>
+          <span>Kinerja →</span>
+        </div>
+        <div class="grid-3" style="gap:10px;min-width:700px">
+          <div class="wf-box" style="margin:0;padding:15px;background:#fff3e0;border-color:#ff9800"><p style="font-weight:bold">7. Potential Gem</p><p style="font-size:10px">Potensi Tinggi, Performa Rendah</p><p style="font-size:12px;margin-top:10px;font-weight:bold">0 Karyawan</p></div>
+          <div class="wf-box" style="margin:0;padding:15px;background:#e8f5e9;border-color:#4caf50"><p style="font-weight:bold">8. High Potential</p><p style="font-size:10px">Potensi Tinggi, Performa Menengah</p><p style="font-size:12px;margin-top:10px;font-weight:bold">0 Karyawan</p></div>
+          <div class="wf-box" style="margin:0;padding:15px;background:#4caf50;color:white;border-color:#388e3c;border-width:3px"><p style="font-weight:bold">9. Star / Future Leader</p><p style="font-size:10px">Potensi & Performa Sangat Tinggi</p><div style="margin-top:10px;background:rgba(255,255,255,0.2);padding:8px;border-radius:4px">Budi Santoso<br>Staff Marketing</div></div>
+          <div class="wf-box" style="margin:0;padding:15px;background:#ffebee;border-color:#f44336"><p style="font-weight:bold">4. Inconsistent Player</p><p style="font-size:10px">Potensi Menengah, Performa Rendah</p><p style="font-size:12px;margin-top:10px;font-weight:bold">0 Karyawan</p></div>
+          <div class="wf-box" style="margin:0;padding:15px;background:#e3f2fd;border-color:#2196f3"><p style="font-weight:bold">5. Core Employee</p><p style="font-size:10px">Tulang Punggung Operasional</p><div style="margin-top:10px;padding:8px;background:white;border:1px solid #ccc">Dewi Lestari<br>Staff IT</div></div>
+          <div class="wf-box" style="margin:0;padding:15px;background:#e8f5e9;border-color:#4caf50"><p style="font-weight:bold">6. High Performer</p><p style="font-size:10px">Performa Tinggi, Potensi Menengah</p><div style="margin-top:10px;padding:8px;background:white;border:1px solid #ccc">Ahmad Fauzi<br>Supervisor</div></div>
+          <div class="wf-box" style="margin:0;padding:15px;background:#ffcccb;border-color:#d32f2f"><p style="font-weight:bold">1. Underperformer</p><p style="font-size:10px">Butuh Evaluasi Mendalam</p><p style="font-size:12px;margin-top:10px;font-weight:bold">0 Karyawan</p></div>
+          <div class="wf-box" style="margin:0;padding:15px;background:#fff3e0;border-color:#ff9800"><p style="font-weight:bold">2. Effective</p><p style="font-size:10px">Potensi Rendah, Performa Menengah</p><p style="font-size:12px;margin-top:10px;font-weight:bold">0 Karyawan</p></div>
+          <div class="wf-box" style="margin:0;padding:15px;background:#e3f2fd;border-color:#2196f3"><p style="font-weight:bold">3. Solid Professional</p><p style="font-size:10px">Performa Tinggi, Potensi Rendah</p><p style="font-size:12px;margin-top:10px;font-weight:bold">0 Karyawan</p></div>
+        </div>
+        <div class="grid-3" style="gap:10px;margin-top:10px;text-align:center;font-size:10px;font-weight:bold;color:#999;text-transform:uppercase">
+          <div>Low Performance</div><div>Medium Performance</div><div>High Performance</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

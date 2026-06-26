@@ -1,0 +1,231 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ==========================================
+// 1. MANAJEMEN PENGGUNA & ROLE
+// ==========================================
+
+model User {
+  id_user  Int      @id @default(autoincrement())
+  nama     String
+  email    String   @unique
+  password String
+  role     RoleType
+  status   StatusUser @default(ACTIVE)
+  
+  // Relasi Role Khusus (One-to-One opsional)
+  karyawan  Karyawan?
+  atasan    Atasan?
+  adminHR   AdminHR?
+  manajemen Manajemen?
+
+  // Relasi sebagai penilai
+  formDikerjakan FormPenilaian[] @relation("PenilaiForm")
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+enum RoleType {
+  ADMIN_HR
+  MANAJEMEN
+  ATASAN
+  KARYAWAN
+}
+
+enum StatusUser {
+  ACTIVE
+  INACTIVE
+}
+
+model Karyawan {
+  id_karyawan Int    @id @default(autoincrement())
+  nip         String @unique
+  id_user     Int    @unique
+  id_atasan   Int?
+  jabatan     String
+  departemen  String
+
+  // Relasi
+  user   User    @relation(fields: [id_user], references: [id_user], onDelete: Cascade)
+  atasan Atasan? @relation(fields: [id_atasan], references: [id_atasan])
+
+  // Penilaian 360
+  daftarPeerSebagaiKaryawan DaftarPeer[] @relation("KaryawanDinilai")
+  daftarPeerSebagaiPeer     DaftarPeer[] @relation("PeerPenilai")
+  formDinilai               FormPenilaian[] @relation("KaryawanDinilaiForm")
+  hasilPenilaian            HasilPenilaian[]
+}
+
+model Atasan {
+  id_atasan Int    @id @default(autoincrement())
+  nip       String @unique
+  id_user   Int    @unique
+  jabatan   String
+
+  // Relasi
+  user     User       @relation(fields: [id_user], references: [id_user], onDelete: Cascade)
+  bawahan  Karyawan[]
+}
+
+model AdminHR {
+  id_admin Int    @id @default(autoincrement())
+  nip      String @unique
+  id_user  Int    @unique
+  jabatan  String
+
+  user     User               @relation(fields: [id_user], references: [id_user], onDelete: Cascade)
+  periode  PeriodePenilaian[]
+}
+
+model Manajemen {
+  id_manajemen Int    @id @default(autoincrement())
+  id_user      Int    @unique
+  jabatan      String
+
+  user User @relation(fields: [id_user], references: [id_user], onDelete: Cascade)
+}
+
+// ==========================================
+// 2. KONFIGURASI PENILAIAN
+// ==========================================
+
+model PeriodePenilaian {
+  id_periode   Int      @id @default(autoincrement())
+  id_admin     Int
+  nama_periode String
+  tgl_mulai    DateTime
+  tgl_selesai  DateTime
+  status       StatusPeriode @default(DRAFT)
+
+  // Relasi
+  adminHR AdminHR @relation(fields: [id_admin], references: [id_admin])
+  formPenilaian FormPenilaian[]
+  hasilPenilaian HasilPenilaian[]
+
+  created_at DateTime @default(now())
+}
+
+enum StatusPeriode {
+  DRAFT
+  ACTIVE
+  CLOSED
+}
+
+model IndikatorAkhlak {
+  id_indikator   Int      @id @default(autoincrement())
+  dimensi        DimensiAkhlak
+  name_indikator String
+  deskripsi      String   @db.Text
+  bobot          Float
+
+  jawaban JawabanPenilaian[]
+}
+
+enum DimensiAkhlak {
+  AMANAH
+  KOMPETEN
+  HARMONIS
+  LOYAL
+  ADAPTIF
+  KOLABORATIF
+}
+
+// ==========================================
+// 3. TRANSAKSI PENILAIAN 360
+// ==========================================
+
+model DaftarPeer {
+  id_peer          Int      @id @default(autoincrement())
+  id_karyawan      Int      // Yang dinilai
+  id_karyawan_peer Int      // Yang menilai
+  status           StatusPersetujuan @default(PENDING)
+
+  // Relasi
+  karyawan Karyawan @relation("KaryawanDinilai", fields: [id_karyawan], references: [id_karyawan])
+  peer     Karyawan @relation("PeerPenilai", fields: [id_karyawan_peer], references: [id_karyawan])
+
+  @@unique([id_karyawan, id_karyawan_peer])
+}
+
+enum StatusPersetujuan {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model FormPenilaian {
+  id_form        Int      @id @default(autoincrement())
+  id_periode     Int
+  id_karyawan    Int      // Karyawan yang dinilai
+  id_penilai     Int      // User yang menilai
+  tipe_penilaian TipePenilaian
+  status         StatusForm @default(BELUM)
+  tgl_submit     DateTime?
+
+  // Relasi
+  periode  PeriodePenilaian @relation(fields: [id_periode], references: [id_periode])
+  karyawan Karyawan         @relation("KaryawanDinilaiForm", fields: [id_karyawan], references: [id_karyawan])
+  penilai  User             @relation("PenilaiForm", fields: [id_penilai], references: [id_user])
+  
+  jawabans JawabanPenilaian[]
+
+  @@unique([id_periode, id_karyawan, id_penilai])
+}
+
+enum TipePenilaian {
+  SELF
+  ATASAN
+  PEER
+  BAWAHAN
+}
+
+enum StatusForm {
+  BELUM
+  DRAFT
+  SUBMITTED
+}
+
+model JawabanPenilaian {
+  id_jawaban   Int      @id @default(autoincrement())
+  id_form      Int
+  id_indikator Int
+  skor         Int      // Skala 1-5
+  komentar     String?  @db.Text
+
+  form      FormPenilaian   @relation(fields: [id_form], references: [id_form], onDelete: Cascade)
+  indikator IndikatorAkhlak @relation(fields: [id_indikator], references: [id_indikator])
+
+  @@unique([id_form, id_indikator])
+}
+
+// ==========================================
+// 4. HASIL ANALITIK
+// ==========================================
+
+model HasilPenilaian {
+  id_hasil           Int      @id @default(autoincrement())
+  id_karyawan        Int
+  id_periode         Int
+  skor_akhir         Float
+  predikat           String
+  status_rekomendasi Rekomendasi?
+
+  karyawan Karyawan         @relation(fields: [id_karyawan], references: [id_karyawan])
+  periode  PeriodePenilaian @relation(fields: [id_periode], references: [id_periode])
+
+  @@unique([id_karyawan, id_periode])
+}
+
+enum Rekomendasi {
+  TALENT
+  IDP
+}
